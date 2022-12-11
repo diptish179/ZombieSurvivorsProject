@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 293d581e469e91444b5a9bd23e9b48c4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - merman: {fileID: 6176362953912343460, guid: 83ecc69e87fee99439b0de81e213da43, type: 3}
+  - zombie: {fileID: 4471683051858106383, guid: 830b2441a528f6643bf29a508214607b, type: 3}
+  - vampire: {fileID: 8148948368195965061, guid: 21c2d7123e6736043bd625c8554d703a, type: 3}
+  - player: {fileID: 2040562476129336247, guid: 0f5b98208bdff7848b40efd09af8f3c0, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
