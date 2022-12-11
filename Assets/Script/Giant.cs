@@ -106,21 +106,6 @@ public class Giant : Enemy
 
         // Apply a force to the Rigidbody to make the knife move towards the player.
         rb.AddForce(knifDir * knifeSpeed, ForceMode.Impulse);
-
-
-        // Check for collisions between the knife and the player.
-        knife.gameObject.GetComponent<Collider>().isTrigger = false;
-        knife.gameObject.layer = LayerMask.NameToLayer("Player");
-
-
-
-        // Damage the player when the knife collides with it.
-        if(knife.gameObject.GetComponent<Collider>().attachedRigidbody.detectCollisions)
-    {
-            if (collision.gameObject.CompareTag("Player"))
-            {
-                collision.gameObject.GetComponent<Player>().TakeDamage(damageAmount);
-            }
-        }
     }
+
 }
