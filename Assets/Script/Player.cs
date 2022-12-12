@@ -35,6 +35,11 @@ public class Player : MonoBehaviour
             int randomIndex = UnityEngine.Random.Range(0, weapons.Length);
             weapons[randomIndex].LevelUp();
         }
+        // If the player's current experience level is 5, load the "Level 2" scene
+        if (currentLevel == 5)
+        {
+            SceneManager.LoadScene("Level 2");
+        }
     }
 
     internal void PlayerHeal0()
