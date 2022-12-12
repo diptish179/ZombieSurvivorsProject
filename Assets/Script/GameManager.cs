@@ -83,8 +83,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator SpawnEnemyCoroutine()
     {
-        SpawnEnemies(giant, 5, false);
-        yield return new WaitForSeconds(200f);
+        SpawnEnemies(zombie, 5, false);
+        yield return new WaitForSeconds(2f);
         SpawnEnemies(merman, 5, false);
         yield return new WaitForSeconds(2f);
         SpawnEnemies(vampire, 5, false);
@@ -109,6 +109,7 @@ public class GameManager : MonoBehaviour
         SpawnEnemies(zombie, 15);
         SpawnEnemies(merman, 10);
         SpawnEnemies(vampire, 5);
+        SpawnEnemies(giant, 5);
         yield return new WaitForSeconds(15f);
         SpawnEnemies(merman, 15);
         SpawnEnemies(zombie, 20);
@@ -120,6 +121,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(10f);
         SpawnEnemies(merman, 15);
         SpawnEnemies(zombie, 10);
+        SpawnEnemies(giant, 5);
         yield return new WaitForSeconds(10f);
         SpawnEnemies(zombie, 15);
         SpawnEnemies(merman, 10);

@@ -18,9 +18,9 @@ public class GiantKnife : MonoBehaviour
 
     // The amount of damage the knife should do to the player on collision
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        Player player = collision.GetComponent<Player>();
+        Player player = collision.gameObject.GetComponent<Player>();
         if (!player.isInvincible)
         {
             if (player.OnDamage())
@@ -29,6 +29,7 @@ public class GiantKnife : MonoBehaviour
                 //Instantiate(crystalPrefab, transform.position, Quaternion.identity);
             }
         }
+
     }
     
 

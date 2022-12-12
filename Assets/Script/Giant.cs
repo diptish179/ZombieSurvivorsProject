@@ -106,6 +106,7 @@ public class Giant : Enemy
 
         // Apply a force to the Rigidbody to make the knife move towards the player.
         rb.AddForce(knifDir * knifeSpeed, ForceMode.Impulse);
+        
 
     }
 
