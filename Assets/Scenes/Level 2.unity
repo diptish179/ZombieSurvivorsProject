@@ -403,6 +403,7 @@ MonoBehaviour:
   healItem0: {fileID: 4602620115371994122, guid: 43c697246df6fc548b1296b4877fd38e, type: 3}
   healItem1: {fileID: 4645276623675612508, guid: 89c80213d73b6f944a962b609e4688a5, type: 3}
   waveoffset: 8
+  hordeoffset: 10
   healItemoffset: 5
 --- !u!4 &329754964
 Transform:
