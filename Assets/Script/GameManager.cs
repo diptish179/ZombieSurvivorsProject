@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject healItem0;
     [SerializeField] GameObject healItem1;
     [SerializeField] int waveoffset =15;
-    //[SerializeField] int hordeoffset = 10;
+    [SerializeField] int hordeoffset = 10;
     [SerializeField] int healItemoffset = 10;
 
 
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     {
         SpawnEnemies(zombie, 5, false);
         yield return new WaitForSeconds(2f);
-        SpawnEnemies(merman, 5, false);
+        SpawnEnemies(merman, 5, true);
         yield return new WaitForSeconds(2f);
         SpawnEnemies(vampire, 5, false);
         yield return new WaitForSeconds(2f);
@@ -158,32 +158,41 @@ public class GameManager : MonoBehaviour
 
     }
 
-        void SpawnEnemies(GameObject enemyPrefab, int numberOfEnemies, bool isTracking=true)
+    //The enemies will follow the player when isTracking is true, and they will move to the right when isTracking is false.
+
+    void SpawnEnemies(GameObject enemyPrefab, int numberOfEnemies, bool isTracking = true)
     {
         for (int i = 0; i < numberOfEnemies; i++)
         {
-            Vector3 spawnPosition = Random.insideUnitCircle.normalized * waveoffset;
-           
-            spawnPosition += player.transform.position;
+            Vector3 spawnPosition;
 
-            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            // If isTracking is true, set the spawn position to be near the player
+            if (isTracking)
+            {
+                spawnPosition = Random.insideUnitCircle.normalized * waveoffset;
+                spawnPosition += player.transform.position;
+            }
+            // If isTracking is false, set the spawn position to be to the right of the player
+            else
+            {
+                spawnPosition = player.transform.position + Vector3.right * (-hordeoffset);
+            }
 
-            //if (!isTracking)
-            //{
-            //    spawnPosition = player.transform.position + Vector3.right * (-hordeoffset);
-            //    GameObject enemyobject = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-            //    Enemy enemy = enemyobject.GetComponent<Enemy>();
-            //    enemy.isTrackingPlayer = false;
-            //}
+            // Instantiate the enemy at the calculated position
+            GameObject enemyobject = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
 
-
-        
-            //if (!isTracking)
-            //{
-            //    enemy.isTrackingPlayer = false;
-            //}
-
+            // If isTracking is false, set the enemy's isTrackingPlayer property to false
+            if (!isTracking)
+            {
+                Enemy enemy = enemyobject.GetComponent<Enemy>();
+                enemy.isTrackingPlayer = false;
+            }
         }
-        //isTracking = true;
     }
+
+
+
+
+
+
 }
