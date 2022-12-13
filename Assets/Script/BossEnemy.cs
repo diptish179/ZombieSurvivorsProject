@@ -13,6 +13,11 @@ public class BossEnemy : MonoBehaviour
     public int maxenemyHP = 20;
     Material material;
 
+    enum BossState
+    { Idling, Chasing, Attacking }
+    BossState currentState = BossState.Idling;
+    Animator animator;
+    float waitTime = 2f;
 
     private void Start()
     {
@@ -20,6 +25,7 @@ public class BossEnemy : MonoBehaviour
         currentenemyHP = maxenemyHP;
         material = spriteRenderer.material;
         StartCoroutine(BossCameraCoroutine());
+        animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,6 +61,39 @@ public class BossEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        switch (currentState)
+        {
+            case BossState.Idling:
+                waitTime -= Time.deltaTime;
+                if (waitTime <= 0)
+                {
+                    currentState = BossState.Chasing;
+                }
+                break;
+
+            case BossState.Chasing:
+                if (Vector3.Distance(transform.position, player.transform.position) > 5f)
+                {
+                    animator.SetBool("IsWalking", true);
+                    //this.Update();
+                }
+                else
+                {
+                    animator.SetBool("IsWalking", false);
+                    currentState = BossState.Attacking;
+                }
+                break;
+
+            case BossState.Attacking:
+                animator.SetTrigger("Attack");
+                waitTime = 5f;
+                //Spawnsword();
+
+                currentState = BossState.Idling;
+                break;
+            
+        }
+
         material.SetFloat("_Glow",(1- (float)currentenemyHP/maxenemyHP));
         Vector3 destination = player.transform.position;
         Vector3 source = transform.position;
