@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
         {
             levelCount++;
             SceneManager.LoadScene("Level 2");
+            spriteRenderer.sprite.name = "Arikado_15";
         }
     }
 

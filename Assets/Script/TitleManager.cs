@@ -80,7 +80,8 @@ public class TitleManager : MonoBehaviour
 
     public void OnUpgradeButtonClick()
     {
-        Debug.Log("To do");
+        //Debug.Log("To do");
+        SceneManager.LoadScene("Upgrade Menu");
     }
 
     public void OnExitButtonClick()
