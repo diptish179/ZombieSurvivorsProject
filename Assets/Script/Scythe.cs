@@ -21,14 +21,14 @@ public class Scythe : MonoBehaviour
         {
             //Debug.Log("Scythe contact with enemy");
             enemy.Damage(scytheDmg);
-
+            gameObject.SetActive(false);
         }
 
         BossEnemy bossenemy = collision.GetComponent<BossEnemy>();
         if (bossenemy != null)
         {
             bossenemy.Damage(scytheDmg);
-
+            gameObject.SetActive(false);
         }
     }
 }
