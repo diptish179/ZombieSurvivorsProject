@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,12 +39,24 @@ public class GameManager : MonoBehaviour
         timerTxt.text = minutes.ToString("00") + ":" + seconds.ToString("00");
     }
 
-    void Start()
-    {
-        StartCoroutine(SpawnEnemyCoroutine());
-        StartCoroutine(SpawnHealItemCoroutine());
-        
-    }
+        void Start()
+        {
+            // Check which level is currently loaded
+            if (SceneManager.GetActiveScene().name == "Level 1")
+            {
+                // Start spawning enemies using the SpawnEnemy1Coroutine if Level 1 is loaded
+                StartCoroutine(SpawnEnemy1Coroutine());
+            }
+            else if (SceneManager.GetActiveScene().name == "Level 2")
+            {
+                // Start spawning enemies using the SpawnEnemy2Coroutine if Level 2 is loaded
+                StartCoroutine(SpawnEnemy2Coroutine());
+            }
+
+            // Start spawning healing items
+            StartCoroutine(SpawnHealItemCoroutine());
+        }
+    
 
      public void Update()
     {
@@ -81,19 +94,19 @@ public class GameManager : MonoBehaviour
 
    
 
-    private IEnumerator SpawnEnemyCoroutine()
+    private IEnumerator SpawnEnemy1Coroutine()
     {
         SpawnEnemies(zombie, 5, false);
         yield return new WaitForSeconds(2f);
         SpawnEnemies(merman, 5, true);
         yield return new WaitForSeconds(2f);
-        SpawnEnemies(vampire, 5, false);
+        SpawnEnemies(zombie, 5, false);
         yield return new WaitForSeconds(2f);
         SpawnEnemies(zombie, 5);
       
         yield return new WaitForSeconds(5f);
         SpawnEnemies(merman, 2);
-        SpawnEnemies(vampire, 2);
+        SpawnEnemies(zombie, 2);
         yield return new WaitForSeconds(5f);
         SpawnEnemies(merman, 5);
         SpawnEnemies(zombie, 5);
@@ -108,12 +121,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(10f);
         SpawnEnemies(zombie, 15);
         SpawnEnemies(merman, 10);
-        SpawnEnemies(vampire, 5);
+        //SpawnEnemies(vampire, 5);
         SpawnEnemies(giant, 5);
         yield return new WaitForSeconds(15f);
         SpawnEnemies(merman, 15);
         SpawnEnemies(zombie, 20);
-        SpawnEnemies(vampire, 10);
+        
         yield return new WaitForSeconds(5f);
         SpawnEnemies(zombie, 10);
         SpawnEnemies(merman, 15);
@@ -121,15 +134,15 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(10f);
         SpawnEnemies(merman, 15);
         SpawnEnemies(zombie, 10);
-        SpawnEnemies(giant, 5);
+        SpawnEnemies(giant, 3);
         yield return new WaitForSeconds(10f);
         SpawnEnemies(zombie, 15);
         SpawnEnemies(merman, 10);
-        SpawnEnemies(vampire, 5);
+        
         yield return new WaitForSeconds(15f);
         SpawnEnemies(merman, 15);
         SpawnEnemies(zombie, 20);
-        SpawnEnemies(vampire, 10);
+        
         yield return new WaitForSeconds(20f);
         SpawnEnemies(bossKnight, 1);
         while (true)
@@ -146,15 +159,94 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(10f);
             SpawnEnemies(zombie, 15);
             SpawnEnemies(merman, 10);
-            SpawnEnemies(vampire, 5);
+           
             yield return new WaitForSeconds(15f);
             SpawnEnemies(merman, 20);
+            SpawnEnemies(zombie, 20);
+            
+            yield return new WaitForSeconds(20f);
+            SpawnEnemies(bossKnight, 1);
+        }
+        
+
+    }
+
+    private IEnumerator SpawnEnemy2Coroutine()
+    {
+        SpawnEnemies(zombie, 4);
+        yield return new WaitForSeconds(2f);
+        SpawnEnemies(zombie, 4);
+        SpawnEnemies(vampire, 4);
+        yield return new WaitForSeconds(2f);
+        SpawnEnemies(vampire, 2, false);
+        yield return new WaitForSeconds(2f);
+        SpawnEnemies(zombie, 10, false);
+        yield return new WaitForSeconds(5f);
+        SpawnEnemies(vampire, 5);
+       
+        yield return new WaitForSeconds(5f);
+        //SpawnEnemies(merman, 5);
+        SpawnEnemies(zombie, 5);
+
+        yield return new WaitForSeconds(5f);
+        SpawnEnemies(zombie, 5);
+        SpawnEnemies(giant, 5);
+        SpawnEnemies(zombie, 5);
+        yield return new WaitForSeconds(10f);
+        SpawnEnemies(merman, 5);
+        SpawnEnemies(zombie, 5);
+        yield return new WaitForSeconds(10f);
+        SpawnEnemies(zombie, 15);
+        
+        SpawnEnemies(vampire, 5);
+        SpawnEnemies(giant, 5);
+        yield return new WaitForSeconds(15f);
+        
+        SpawnEnemies(zombie, 20);
+        SpawnEnemies(vampire, 10);
+        yield return new WaitForSeconds(5f);
+        SpawnEnemies(zombie, 10);
+        SpawnEnemies(vampire, 15);
+        SpawnEnemies(zombie, 10);
+        yield return new WaitForSeconds(10f);
+        SpawnEnemies(merman, 15);
+        SpawnEnemies(zombie, 10);
+       
+        yield return new WaitForSeconds(10f);
+        SpawnEnemies(zombie, 15);
+        SpawnEnemies(vampire, 10);
+      
+        SpawnEnemies(giant, 5);
+        yield return new WaitForSeconds(15f);
+        
+        SpawnEnemies(zombie, 20);
+        SpawnEnemies(vampire, 10);
+        SpawnEnemies(giant, 5);
+        yield return new WaitForSeconds(20f);
+        SpawnEnemies(bossKnight, 1);
+        while (true)
+        {
+            //SpawnEnemies(merman, 10);
+            yield return new WaitForSeconds(5f);
+            SpawnEnemies(zombie, 15, false);
+            yield return new WaitForSeconds(5f);
+            //SpawnEnemies(merman, 15);
+            SpawnEnemies(zombie, 15);
+            yield return new WaitForSeconds(10f);
+            //SpawnEnemies(merman, 5);
+            SpawnEnemies(zombie, 10);
+            yield return new WaitForSeconds(10f);
+            SpawnEnemies(zombie, 15);
+            //SpawnEnemies(merman, 10);
+            SpawnEnemies(vampire, 5);
+            yield return new WaitForSeconds(15f);
+           // SpawnEnemies(merman, 20);
             SpawnEnemies(zombie, 20);
             SpawnEnemies(vampire, 20);
             yield return new WaitForSeconds(20f);
             SpawnEnemies(bossKnight, 1);
         }
-        
+
 
     }
 
