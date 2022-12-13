@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float speed = 1f;
     public bool isTrackingPlayer = true;
     public int enemyHP = 3;
+    public int enemyKillCount = 0;
 
 
     protected virtual void Start()
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
         {
             if (player.OnDamage())
             {
+                TitleManager.saveData.killCount++;
                 Destroy(gameObject);
                 Instantiate(crystalPrefab, transform.position, Quaternion.identity);
             }
@@ -59,6 +61,7 @@ public class Enemy : MonoBehaviour
         if (enemyHP < 1)
         {
             //TitleManager.saveData.goldCoins++;
+            TitleManager.saveData.killCount++;
             Destroy(gameObject);
             Instantiate(crystalPrefab, transform.position, Quaternion.identity);
             

@@ -19,7 +19,7 @@ public class Crystal : MonoBehaviour
         Player player = collision.GetComponent<Player>();
         if(player)
         {
-            
+            TitleManager.saveData.crystalCount++;
             Destroy(gameObject);
            
             player.AddExp();

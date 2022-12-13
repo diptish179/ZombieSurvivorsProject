@@ -16,6 +16,7 @@ public class PlayerHeal_1 : MonoBehaviour
         {
             /// Add 2 hp to player 
             //Debug.Log("Picked up 1 HP");
+            TitleManager.saveData.healpotionCount++;
             player.PlayerHeal1();
             playerHealSFX.Play();
             DestroyObject(gameObject, 0.5f);

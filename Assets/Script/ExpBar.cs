@@ -11,6 +11,7 @@ public class ExpBar : MonoBehaviour
     [SerializeField] Image foreground;
     [SerializeField] TMP_Text expLevelText;
 
+
     
 
     private void Update()

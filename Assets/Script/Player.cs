@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
             {
                 //TitleManager.saveData.deathCount++;
                 Destroy(gameObject);
-                SceneManager.LoadScene("Title");
+                SceneManager.LoadScene("GameOver");
                 
             } return true;
         }    return false;    
