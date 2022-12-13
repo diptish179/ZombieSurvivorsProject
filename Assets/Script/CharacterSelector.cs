@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelector : MonoBehaviour
 {
@@ -14,5 +15,20 @@ public class CharacterSelector : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnMainMenuButtonClick()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
+    public void OnJuliusButtonClick()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
+    public void OnArikadoButtonClick()
+    {
+        SceneManager.LoadScene("Title");
     }
 }
