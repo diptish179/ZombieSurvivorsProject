@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     internal int expToLevel = 5;
     public int currentLevel;
 
+    public int levelCount = 0;
+
     internal void AddExp()
     {
         currentExp++;
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
         // If the player's current experience level is 5, load the "Level 2" scene
         if (currentLevel == 5)
         {
+            levelCount++;
             SceneManager.LoadScene("Level 2");
         }
     }

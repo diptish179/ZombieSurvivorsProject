@@ -167,7 +167,6 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(20f);
             SpawnEnemies(bossKnight, 1);
         }
-        
 
     }
 
@@ -246,8 +245,6 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(20f);
             SpawnEnemies(bossKnight, 1);
         }
-
-
     }
 
     //The enemies will follow the player when isTracking is true, and they will move to the right when isTracking is false.
