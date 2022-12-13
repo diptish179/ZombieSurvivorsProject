@@ -89,4 +89,28 @@ public class TitleManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void TogglePostProcessing()
+    {
+        var camera = Camera.main.GetComponent<Camera>();
+        if (camera == null)
+        {
+            Debug.LogError("TitleManager: No Camera component found on game object.");
+            return;
+        }
+
+        var postProcessingBehaviour = camera.GetComponent<Behaviour>();
+        if (postProcessingBehaviour == null)
+        {
+            Debug.LogError("TitleManager: No PostProcessingBehaviour component found on camera game object.");
+            return;
+        }
+
+        postProcessingBehaviour.enabled = !postProcessingBehaviour.enabled;
+    }
+    
+
+
+
+
+
 }
