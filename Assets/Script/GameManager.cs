@@ -208,7 +208,7 @@ public class GameManager : MonoBehaviour
         SpawnEnemies(vampire, 15);
         SpawnEnemies(zombie, 10);
         yield return new WaitForSeconds(10f);
-        SpawnEnemies(merman, 15);
+        SpawnEnemies(vampire, 15);
         SpawnEnemies(zombie, 10);
        
         yield return new WaitForSeconds(10f);
